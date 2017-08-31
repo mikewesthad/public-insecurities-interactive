@@ -5,7 +5,7 @@ import styles from "../css/about.scss";
 export default function About() {
   return (
     <div className={styles.container}>
-      <p>Work in progess: interactive data visualization</p>
+      <p>Work in progress: interactive data visualization</p>
       <p>
         This piece is based on a video installation piece that I made in 2014 called{" "}
         <a href="https://www.mikewesthad.com/projects/public-insecurities.html">
