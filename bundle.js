@@ -27617,7 +27617,7 @@ function About() {
     _react2.default.createElement(
       "p",
       null,
-      "Work in progess: interactive data visualization"
+      "Work in progress: interactive data visualization"
     ),
     _react2.default.createElement(
       "p",
@@ -28555,6 +28555,13 @@ var callbackNameGenerator = {
   }
 };
 
+// Hack for now - just for hosting on HTTPS at the moment
+// Personal proxy to allow HTTP api requests over HTTPS
+function buildProxyUrl(url) {
+  var proxyUrl = "https://api-forwarding.herokuapp.com/?url=" + encodeURIComponent(url);
+  return proxyUrl;
+}
+
 function fetchJsonp(url) {
   var jsonpKey = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "jsonp";
   var timeout = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 4000;
@@ -28577,7 +28584,7 @@ function fetchJsonp(url) {
       if (query.length !== 0 && !query.endsWith("&")) requestUrl += "&";
     }
     requestUrl += jsonpKey + "=window.jsonpCallbacks." + callbackName;
-    script.src = requestUrl;
+    script.src = buildProxyUrl(requestUrl);
 
     // Set a timeout error
     var timerId = setTimeout(function () {
