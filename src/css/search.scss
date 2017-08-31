@@ -1,0 +1,12 @@
+.search {
+  font-size: 2rem;
+  padding: 20px;
+  min-width: 650px;
+  font-family: sans-serif;
+  box-shadow: none;
+  border: 3px solid #4885ed;
+}
+
+.search:focus {
+  outline: none;
+}

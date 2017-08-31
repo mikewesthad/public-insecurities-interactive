@@ -1,0 +1,40 @@
+$active-nav-color: #4885ed;
+$inactive-nav-color: mix($active-nav-color, #fff, 40%);
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  font-size: 1.25rem;
+
+  li {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+.underline {
+  margin: 0 auto;
+  width: 0;
+  height: 4px;
+  margin-bottom: -2px;
+  border-bottom: 2px solid $inactive-nav-color;
+  transition: width 0.1s ease-in-out;
+}
+
+.active > .underline {
+  width: 75%;
+  border-bottom-color: $active-nav-color;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+  outline: none;
+  margin: 0 5px;
+  padding: 5px 10px;
+}
+
+:not(.active):hover > .underline {
+  width: 30%;
+}

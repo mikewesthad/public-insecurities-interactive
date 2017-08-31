@@ -1,0 +1,19 @@
+.cursor {
+  border-right: 1px solid black;
+}
+
+.blinking {
+  animation: blink 1s infinite step-end;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
