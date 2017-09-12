@@ -1,8 +1,18 @@
 .search {
-  margin-top: 20vh;
+  margin-top: 12vh;
   text-align: center;
 }
 
+.loading {
+  margin-bottom: 25px;
+}
+
 .results {
-  font-size: 1.25em;
+  margin-top: 25px;
+  font-size: 1.25rem;
+}
+
+.error {
+  padding-bottom: 2px;
+  border-bottom: 1px solid #ff1414;
 }
