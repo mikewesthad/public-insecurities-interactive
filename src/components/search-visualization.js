@@ -46,7 +46,13 @@ export default class SearchVisualization extends React.Component {
     this.setState({ isSearching: true, errorMessage: null, autocompletes: [] });
     fetchAutocompletesWithTlds(phrase, googleTlds)
       .then(results => this.onResults(results))
-      .catch(error => this.onError("Error! Please try again later."));
+      .catch(error => {
+        if (error.message.includes("timed out")) {
+          this.onError("Server didn't respond. Try searching again.");
+        } else {
+          this.onError("Error! Please try again later.");
+        }
+      });
   }
 
   listResults(autocompletes) {

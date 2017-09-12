@@ -4,7 +4,9 @@ import fetchJsonp from "./fetch-jsonp";
 export function fetchAutocompletes(searchTerm, tld = ".com") {
   const encodedTerm = encodeURI(searchTerm);
   return fetchJsonp(
-    `http://google${tld}/complete/search?client=youtube&q=${encodedTerm}`
+    `http://google${tld}/complete/search?client=youtube&q=${encodedTerm}`,
+    "jsonp",
+    "6000"
   ).then(jsonResponse => {
     const [originalTerm, autocompletes] = jsonResponse;
     return {
