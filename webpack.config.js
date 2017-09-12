@@ -11,7 +11,7 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.(js|jsx)$/, use: "babel-loader" },
+      { test: /\.(js|jsx)$/, use: "babel-loader", exclude: /node_modules/ },
       {
         test: /\.(scss|sass)$/,
         use: ExtractTextPlugin.extract({
@@ -26,7 +26,7 @@ module.exports = {
   },
   plugins: [
     new HTMLWebpackPlugin({ template: "src/index.html" }),
-    new ExtractTextPlugin("[name].[contenthash].css"),
+    new ExtractTextPlugin({ filename: "[name].[contenthash].css", allChunks: true }),
     new CopyWebpackPlugin([{ from: "./src/images", to: "images/" }])
   ],
   devServer: {
