@@ -19,8 +19,9 @@ export default class TypingText extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
+    const { typingDirection, children } = this.props;
     // If the direction changes, typing should start over from a new initial state
-    if (this.props.typingDirection !== newProps.typingDirection) {
+    if (typingDirection !== newProps.typingDirection || children !== newProps.children) {
       if (this.state.timer) clearTimeout(this.state.timer);
       this.setInitialState(newProps);
       this.scheduleFirstCharacter();
