@@ -27571,8 +27571,12 @@ var TypingText = function (_React$Component) {
   }, {
     key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(newProps) {
+      var _props = this.props,
+          typingDirection = _props.typingDirection,
+          children = _props.children;
       // If the direction changes, typing should start over from a new initial state
-      if (this.props.typingDirection !== newProps.typingDirection) {
+
+      if (typingDirection !== newProps.typingDirection || children !== newProps.children) {
         if (this.state.timer) clearTimeout(this.state.timer);
         this.setInitialState(newProps);
         this.scheduleFirstCharacter();
@@ -27661,9 +27665,9 @@ var TypingText = function (_React$Component) {
       var _state = this.state,
           isTyping = _state.isTyping,
           typedText = _state.typedText;
-      var _props = this.props,
-          showCursor = _props.showCursor,
-          className = _props.className;
+      var _props2 = this.props,
+          showCursor = _props2.showCursor,
+          className = _props2.className;
 
       return _react2.default.createElement(
         "span",
