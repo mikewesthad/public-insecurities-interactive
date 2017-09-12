@@ -27320,7 +27320,11 @@ var SearchVisualization = function (_React$Component) {
       (0, _autocompleteApi.fetchAutocompletesWithTlds)(phrase, googleTlds).then(function (results) {
         return _this2.onResults(results);
       }).catch(function (error) {
-        return _this2.onError("Error! Please try again later.");
+        if (error.message.includes("timed out")) {
+          _this2.onError("Server didn't respond. Try searching again.");
+        } else {
+          _this2.onError("Error! Please try again later.");
+        }
       });
     }
   }, {
@@ -28293,7 +28297,7 @@ function fetchAutocompletes(searchTerm) {
   var tld = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ".com";
 
   var encodedTerm = encodeURI(searchTerm);
-  return (0, _fetchJsonp2.default)("http://google" + tld + "/complete/search?client=youtube&q=" + encodedTerm).then(function (jsonResponse) {
+  return (0, _fetchJsonp2.default)("http://google" + tld + "/complete/search?client=youtube&q=" + encodedTerm, "jsonp", "6000").then(function (jsonResponse) {
     var _jsonResponse = _slicedToArray(jsonResponse, 2),
         originalTerm = _jsonResponse[0],
         autocompletes = _jsonResponse[1];
